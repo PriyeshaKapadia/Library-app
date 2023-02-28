@@ -135,7 +135,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         boolean res= (verifyEmailId()|verifyPass());
         if(res==true)
             return;
-        String id=editID.getEditText().getText().toString().trim()+"@iiitnr.edu.in";
+        String id=editID.getEditText().getText().toString().trim();
         String pass=editPass.getEditText().getText().toString().trim();
         progressDialog.setMessage("Signing In ... ");
        progressDialog.show();
@@ -145,11 +145,11 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful())
                 {
-                    String id=editID.getEditText().getText().toString().trim()+"@gim.ac.in";
+                    String id=editID.getEditText().getText().toString().trim();
                     db.collection("User").whereEqualTo("email",id).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                         @Override
                         public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                            User obj=new User(name, id, enroll, type1);
+                            User obj=new User();
                             for(QueryDocumentSnapshot doc:queryDocumentSnapshots)
                                obj=doc.toObject(User.class);
 

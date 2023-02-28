@@ -38,7 +38,7 @@ public class UserReissueBook extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     private ProgressDialog p;
     private boolean res1;
-    private User U = new User(name, id, enroll, type1);
+    private User U = new User();
     private String flag;
     private List<String> A=new ArrayList<>();
 

@@ -31,7 +31,7 @@ public class UserSeeMyBooks extends AppCompatActivity {
     private FirebaseFirestore db;
     private FirebaseAuth firebaseAuth;
     private TextView ifNoBook1;
-    private User U = new User(name, id, enroll, type1);
+    private User U = new User();
     private Book B = new Book();
     private ProgressDialog progressDialog;
 

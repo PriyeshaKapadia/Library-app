@@ -31,11 +31,11 @@ import java.util.List;
 public class AdminIssueBook extends AppCompatActivity {
 
 
-    private TextInputLayout editCardNo1, editBid3;
+    private TextInputLayout editEnrollNo, editBid3;
     private FirebaseFirestore db;
     private ProgressDialog p;
     private boolean res1, res2;
-    private User U = new User(name, id, enroll, type1);
+    private User U = new User();
     private Book B1 = new Book();
 
     @Override
@@ -53,7 +53,7 @@ public class AdminIssueBook extends AppCompatActivity {
         FirebaseApp.initializeApp(this);
         Button issueButton = (Button) findViewById(R.id.issueButton);
         editBid3 = (TextInputLayout) findViewById(R.id.editBid3);
-        editCardNo1 = (TextInputLayout) findViewById(R.id.editCardNo1);
+        editEnrollNo = (TextInputLayout) findViewById(R.id.editEnrollNo);
         db=FirebaseFirestore.getInstance();
         p = new ProgressDialog(this);
         issueButton.setOnClickListener(new View.OnClickListener() {
@@ -66,13 +66,13 @@ public class AdminIssueBook extends AppCompatActivity {
 
 
     private boolean verifyCard() {
-        String t = editCardNo1.getEditText().getText().toString().trim();
+        String t = editEnrollNo.getEditText().getText().toString().trim();
         if (t.isEmpty()) {
-            editCardNo1.setErrorEnabled(true);
-            editCardNo1.setError("Card No. Required");
+            editEnrollNo.setErrorEnabled(true);
+            editEnrollNo.setError("Card No. Required");
             return true;
         } else {
-            editCardNo1.setErrorEnabled(false);
+            editEnrollNo.setErrorEnabled(false);
             return false;
         }
     }
@@ -91,7 +91,7 @@ public class AdminIssueBook extends AppCompatActivity {
     }
 
     private boolean getUser() {
-        db.collection("User").whereEqualTo("card", Integer.parseInt(editCardNo1.getEditText().getText().toString().trim())).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        db.collection("User").whereEqualTo("card", Integer.parseInt(editEnrollNo.getEditText().getText().toString().trim())).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
 

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    public User(String name, String id, int enroll, int type1) {
+    public User() {
     }
 
     private String name, email;
@@ -14,8 +14,8 @@ public class User {
     private List<Integer> fine = new ArrayList<Integer>();
     private List<Integer> re = new ArrayList<Integer>();
     private List<Timestamp> date = new ArrayList<Timestamp>();
-    private int enroll;
-    private int card;
+    private String enroll;
+//    private int card;
     private int type;
 
     public String getFcmToken() {
@@ -49,11 +49,11 @@ public class User {
 
 
 
-    public User(String name, String email, int enroll, int card, int type) {
+    public User(String name, String id, String enroll, int type) {
         this.name = name;
-        this.email = email;
+        this.email = id;
         this.enroll = enroll;
-        this.card = card;
+//        this.card = card;
         this.type = type;
     }
 
@@ -105,22 +105,19 @@ public class User {
         this.date = date;
     }
 
-    public int getEnroll() {
+    public String getEnroll() {
         return enroll;
     }
 
-    public void setEnroll(int enroll) {
+    public void setEnroll(String enroll) {
         this.enroll = enroll;
     }
 
-    public int getCard() {
-        return card;
-    }
-
-    public void setCard(int card) {
-        this.card = card;
-    }
+//    public int getCard() {
+//        return card;
+//    }
+//
+//    public void setCard(int card) {
+//        this.card = card;
+//    }
 }
-
-
-

@@ -1,5 +1,6 @@
 package com.iiitnr.libraryapp;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 //import android.support.annotation.NonNull;
 //import android.support.design.widget.TextInputLayout;
@@ -30,11 +31,11 @@ public class AdminReissueBook extends AppCompatActivity {
 
 
     private Button reissueButton;
-    private TextInputLayout editCardNo5, editBid5;
+    private TextInputLayout editEnrollNo5, editBid5;
     private FirebaseFirestore db;
     private ProgressDialog p;
     private boolean res1;
-    private User U = new User(name, id, enroll, type1);
+    private User U = new User();
 
     @Override
     public void onBackPressed() {
@@ -44,6 +45,7 @@ public class AdminReissueBook extends AppCompatActivity {
     }
 
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +53,7 @@ public class AdminReissueBook extends AppCompatActivity {
         FirebaseApp.initializeApp(this);
         reissueButton = (Button) findViewById(R.id.reissueButton);
         editBid5 = (TextInputLayout) findViewById(R.id.editBid5);
-        editCardNo5 = (TextInputLayout) findViewById(R.id.editCardNo5);
+        editEnrollNo5 = (TextInputLayout) findViewById(R.id.editEnrollNo5);
         db = FirebaseFirestore.getInstance();
         p = new ProgressDialog(this);
         p.setMessage("Please Wait !");
@@ -64,13 +66,13 @@ public class AdminReissueBook extends AppCompatActivity {
     }
 
     private boolean verifyCard() {
-        String t = editCardNo5.getEditText().getText().toString().trim();
+        String t = editEnrollNo5.getEditText().getText().toString().trim();
         if (t.isEmpty()) {
-            editCardNo5.setErrorEnabled(true);
-            editCardNo5.setError("Card No. Required");
+            editEnrollNo5.setErrorEnabled(true);
+            editEnrollNo5.setError("Card No. Required");
             return true;
         } else {
-            editCardNo5.setErrorEnabled(false);
+            editEnrollNo5.setErrorEnabled(false);
             return false;
         }
     }
@@ -90,7 +92,7 @@ public class AdminReissueBook extends AppCompatActivity {
 
     private boolean getUser() {
 
-        db.collection("User").whereEqualTo("card", Integer.parseInt(editCardNo5.getEditText().getText().toString().trim())).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        db.collection("User").whereEqualTo("card", Integer.parseInt(editEnrollNo5.getEditText().getText().toString().trim())).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
 

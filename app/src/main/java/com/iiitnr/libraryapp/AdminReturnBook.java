@@ -34,7 +34,7 @@ public class AdminReturnBook extends AppCompatActivity {
     private FirebaseFirestore db;
     private ProgressDialog p;
     private boolean res1, res2;
-    private User U = new User(name, id, enroll, type1);
+    private User U = new User();
     private Book B = new Book();
 
     @Override

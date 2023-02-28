@@ -30,11 +30,14 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.SetOptions;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -323,6 +326,9 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
         String id=editID.getEditText().getText().toString().trim();
         String pass=editPass.getEditText().getText().toString().trim();
+//        String name=editName.getEditText().getText().toString().trim();
+//        CollectionReference usersRef = db.collection("User");
+
         if(type.equals("User")){
             type1=0;
         }
@@ -343,17 +349,31 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                     if(type1==0)
                     {
 
-                        int enroll=Integer.parseInt(editEnrollNo.getEditText().getText().toString().trim());
+                        String enroll=editEnrollNo.getEditText().getText().toString().trim();
 //                        int card=Integer.parseInt(editCardNo.getEditText().getText().toString().trim());
-                        db.collection("User").document(id).set(new User(name,id,enroll,type1)).addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                progressDialog.cancel();
-                                Toast.makeText(SignUpActivity.this,"Registered Successfully !",Toast.LENGTH_SHORT).show();
-                                firebaseAuth.signOut();
-                                startActivity(new Intent(getApplicationContext(),SignInActivity.class));
-                                finish();
-                            }
+//                        DocumentReference newDocRef = usersRef.document();
+//                        String newDocId = newDocRef.getId();
+//                        Map<String, Object> userData = new HashMap<>();
+//                        userData.put("name", name);
+//                        userData.put("id", id);
+//                        userData.put("enroll", enroll);
+//                        userData.put("type1", type1);
+//                         SetOptions options = SetOptions.merge();
+
+//                        db.collection("users").document(id).set(userData)
+                        DocumentReference mFirestoreProfiles = db.collection("User").document(id);
+                        User user = new User(name, id, enroll, type1);
+//                        List<String> fieldMask = Arrays.asList("name", "enroll");
+                        mFirestoreProfiles.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            progressDialog.cancel();
+                            Toast.makeText(SignUpActivity.this,"Registered Successfully !",Toast.LENGTH_SHORT).show();
+                            firebaseAuth.signOut();
+                            startActivity(new Intent(getApplicationContext(),SignInActivity.class));
+                            finish();
+                        }
+
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
