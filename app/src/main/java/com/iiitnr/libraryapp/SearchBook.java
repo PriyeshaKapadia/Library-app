@@ -70,19 +70,19 @@ public class SearchBook extends AppCompatActivity {
         {
             case 1:{
                 mode=0;
-                query=db.collection("Book").whereEqualTo("id",intent.getIntExtra("bid",0)).whereGreaterThan("available",0);
+                query=db.collection("Books").whereEqualTo("id",intent.getIntExtra("bid",0)).whereGreaterThan("available",0);
                 break;
             }
             case 2:{
                 mode=0;
-                query=db.collection("Book").whereEqualTo("id",intent.getIntExtra("bid",0));
+                query=db.collection("Books").whereEqualTo("id",intent.getIntExtra("bid",0));
                 break;
 
             }
             case 3:{
                 mode=1;
                 key=intent.getStringExtra("btitle");
-                query=db.collection("Book").whereEqualTo("type",intent.getStringExtra("btype")).whereGreaterThan("available",0);
+                query=db.collection("Books").whereEqualTo("type",intent.getStringExtra("btype")).whereGreaterThan("available",0);
                 break;
 
             }
@@ -90,7 +90,7 @@ public class SearchBook extends AppCompatActivity {
                 mode=1;
 
                 key=intent.getStringExtra("btitle");
-                query=db.collection("Book").whereEqualTo("type",intent.getStringExtra("btype"));
+                query=db.collection("Books").whereEqualTo("type",intent.getStringExtra("btype"));
                 break;
             }
             case 5:{
