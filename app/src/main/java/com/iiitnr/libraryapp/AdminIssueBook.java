@@ -52,7 +52,7 @@ public class AdminIssueBook extends AppCompatActivity {
         setContentView(R.layout.activity_admin_issue_book);
         FirebaseApp.initializeApp(this);
         Button issueButton = (Button) findViewById(R.id.issueButton);
-        editBid3 = (TextInputLayout) findViewById(R.id.editBid3);
+        editBid3 = (TextInputLayout) findViewById(R.id.editAuth);
         editEnrollNo = (TextInputLayout) findViewById(R.id.editEnrollNo);
         db=FirebaseFirestore.getInstance();
         p = new ProgressDialog(this);

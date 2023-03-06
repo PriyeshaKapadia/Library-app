@@ -1,11 +1,9 @@
 package com.iiitnr.libraryapp;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 //import android.support.design.widget.TextInputLayout;
 //import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -18,7 +16,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.FirebaseApp;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 public class SearchBookSet extends AppCompatActivity {
 
@@ -80,7 +77,7 @@ public class SearchBookSet extends AppCompatActivity {
         setContentView(R.layout.activity_search_book_set);
         FirebaseApp.initializeApp(this);
         editTitle3=(TextInputLayout)findViewById(R.id.editTitle3);
-        editBid3=(TextInputLayout) findViewById(R.id.editBid3);
+        editBid3=(TextInputLayout) findViewById(R.id.editAuth);
         spinner3=(Spinner)findViewById(R.id.spinner3);
         button3=(Button)findViewById(R.id.button3);
         checkBox=(CheckBox)findViewById(R.id.onlyAvailable);

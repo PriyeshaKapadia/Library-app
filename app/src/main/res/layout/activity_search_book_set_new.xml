@@ -27,20 +27,6 @@
                 android:textColor="@color/colorPrimary"
                 android:gravity="center"/>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/editAuth"
-                android:layout_marginTop="30dp">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="number"
-                    android:hint="ID" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -58,15 +44,34 @@
             </com.google.android.material.textfield.TextInputLayout>
 
 
-            <Spinner
-                android:layout_marginTop="10dp"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/editAuth"
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:id="@+id/spinner3"
-                >
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp">
 
-            </Spinner>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Author"
+                    android:inputType="textAutoComplete" />
 
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/editAuth"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="30dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Publisher"
+                    android:inputType="textAutoComplete" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <CheckBox
                 android:layout_marginTop="10dp"
