@@ -15,6 +15,7 @@
         <activity android:name=".UserReissueBook"></activity>
         <activity android:name=".AdminReissueBook" />
         <activity android:name=".SearchBookSet" />
+        <activity android:name=".SearchBookSetNew" />
         <activity android:name=".SearchBook" />
         <activity android:name=".AdminCollectFine" />
         <activity android:name=".UserSeeMyBooks" />

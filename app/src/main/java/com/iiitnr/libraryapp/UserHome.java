@@ -72,7 +72,7 @@ public class UserHome extends AppCompatActivity implements View.OnClickListener 
 
         if(v==searchBook1)
         {
-            startActivity(new Intent(getApplicationContext(),SearchBookSet.class));
+            startActivity(new Intent(getApplicationContext(),SearchBookSetNew.class));
         }
 
         if(v==seeBook)
